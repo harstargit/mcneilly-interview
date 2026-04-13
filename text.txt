@@ -1,0 +1,355 @@
+Got both files! Building the blog now with the full Pantone powdered pastel palette and all the document content.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Human Element — Mark McNeilly</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Pantone Powdered Pastels */
+    --lemon-icing:   #f5f0d8;   /* 11-0515 Lemon Icing */
+    --nimbus-cloud:  #d6d4d0;   /* 13-4108 Nimbus Cloud */
+    --raindrops:     #f0dde0;   /* 11-1400 Raindrops on Roses */
+    --cloud-dancer:  #f2f0ec;   /* 11-4201 Cloud Dancer */
+    --ice-melt:      #ccdde8;   /* 13-4306 Ice Melt */
+    --peach-dust:    #f0cdb8;   /* 12-1107 Peach Dust */
+    --almost-aqua:   #c8ddd8;   /* 13-6006 Almost Aqua */
+
+    /* Text */
+    --brown:         #3b1f14;
+    --brown-mid:     #5c3326;
+    --brown-light:   #7a4a38;
+    --brown-faint:   #a07060;
+  }
+
+  body {
+    background-color: var(--cloud-dancer);
+    color: var(--brown);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background-color: var(--raindrops);
+    padding: 80px 40px 64px;
+    text-align: center;
+    border-bottom: 2px solid var(--peach-dust);
+  }
+  .header-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    color: var(--brown);
+    line-height: 1.2;
+    max-width: 760px;
+    margin: 0 auto 24px;
+  }
+  header .subtitle {
+    font-size: 15px;
+    color: var(--brown-mid);
+    max-width: 520px;
+    margin: 0 auto;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .header-meta {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--brown-faint);
+    text-transform: uppercase;
+  }
+
+  /* ── LAYOUT ── */
+  .wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 64px 28px;
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .wrapper { grid-template-columns: 1fr; }
+  }
+
+  /* ── MAIN ── */
+  main > * + * { margin-top: 48px; }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--brown-faint);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  p {
+    color: var(--brown);
+    font-size: 15.5px;
+    margin-bottom: 14px;
+    line-height: 1.85;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CARDS ── */
+  .card {
+    border-radius: 18px;
+    padding: 32px 36px;
+  }
+  .c-lemon    { background: var(--lemon-icing); }
+  .c-nimbus   { background: var(--nimbus-cloud); }
+  .c-rain     { background: var(--raindrops); }
+  .c-cloud    { background: var(--cloud-dancer); border: 1.5px solid var(--nimbus-cloud); }
+  .c-ice      { background: var(--ice-melt); }
+  .c-peach    { background: var(--peach-dust); }
+  .c-aqua     { background: var(--almost-aqua); }
+  .card h2 { margin-top: 0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 4px solid var(--peach-dust);
+    padding: 22px 30px;
+    background-color: var(--lemon-icing);
+    border-radius: 0 16px 16px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--brown);
+    line-height: 1.65;
+    margin: 22px 0;
+  }
+
+  /* ── LISTS ── */
+  ul {
+    padding-left: 20px;
+    color: var(--brown);
+    font-size: 15.5px;
+  }
+  ul li { margin-bottom: 10px; line-height: 1.75; }
+
+  /* ── INSIGHTS GRID ── */
+  .insight-grid { display: flex; flex-direction: column; gap: 28px; margin-top: 10px; }
+  .insight-item { display: flex; gap: 22px; align-items: flex-start; }
+  .insight-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--peach-dust);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    filter: brightness(0.75);
+  }
+  .insight-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    color: var(--brown);
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  .insight-body p { margin: 0; font-size: 15px; }
+
+  /* ── RECOMMENDATIONS ── */
+  .reco-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 10px; }
+  .reco-item {
+    background: var(--cloud-dancer);
+    border: 1.5px solid var(--nimbus-cloud);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .reco-num {
+    background: var(--brown-light);
+    color: var(--cloud-dancer);
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .reco-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--brown);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .reco-body p { font-size: 14.5px; margin: 0; color: var(--brown-mid); }
+
+  /* ── CLOSING QUOTE ── */
+  .closing-quote {
+    background: var(--raindrops);
+    border-radius: 18px;
+    padding: 48px 44px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .closing-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--brown);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0 auto 16px;
+  }
+  .closing-quote cite {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    font-style: normal;
+  }
+
+  /* ── SIDEBAR ── */
+  aside { position: sticky; top: 32px; }
+  aside > * + * { margin-top: 22px; }
+
+  .sb-card {
+    border-radius: 16px;
+    padding: 24px 26px;
+  }
+  .sb-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--brown);
+    margin-bottom: 13px;
+    font-weight: 600;
+  }
+  .sb-card ul {
+    font-size: 13.5px;
+    padding-left: 18px;
+  }
+  .sb-card ul li { margin-bottom: 8px; color: var(--brown); }
+  .sb-card p { font-size: 13.5px; color: var(--brown-mid); margin: 0; line-height: 1.7; }
+
+  /* ── TEAM CARD ── */
+  .team-card {
+    background: var(--peach-dust);
+    border-radius: 16px;
+    padding: 26px 26px;
+  }
+  .team-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--brown);
+    margin-bottom: 16px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .team-card ul { list-style: none; padding: 0; }
+  .team-card ul li {
+    font-size: 14px;
+    color: var(--brown);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(59,31,20,0.12);
+    font-weight: 500;
+  }
+  .team-card ul li:last-child { border-bottom: none; }
+
+  /* ── DIVIDER ── */
+  .rule {
+    width: 48px;
+    height: 2px;
+    background: var(--brown-faint);
+    border: none;
+    margin: 0 0 20px 0;
+    opacity: 0.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--raindrops);
+    text-align: center;
+    padding: 36px 24px;
+    font-size: 12.5px;
+    color: var(--brown-mid);
+    border-top: 1px solid var(--peach-dust);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <p class="header-eyebrow">MBA Interview Series · Leadership Insights</p>
+  <h1>The Human Element:<br>Leadership, EQ & Influence</h1>
+  <p class="subtitle">A conversation with Mark McNeilly — global marketing executive and former IBM & Lenovo leader — on what business school doesn't teach you about leading people.</p>
+  <p class="header-meta">April 2026 &nbsp;·&nbsp; UNC Kenan-Flagler</p>
+</header>
+
+<div class="wrapper">
+
+  <!-- ══════════ MAIN COLUMN ══════════ -->
+  <main>
+
+    <!-- INTRO -->
+    <section>
+      <p class="eyebrow">Introduction</p>
+      <hr class="rule">
+      <p>What does it really take to lead well? Mark McNeilly — whose career spans global marketing leadership at IBM and Lenovo — sat down to explore the gap between leadership theory and lived experience. The conversation ranged from emotional intelligence and the quiet power of relationships, to resilience under pressure and the way technology is reshaping how humans connect with one another.</p>
+    </section>
+
+    <!-- WHO YOU SPOKE WITH -->
+    <section class="card c-lemon">
+      <p class="eyebrow">About the Interviewee</p>
+      <h2>Who Is Mark McNeilly?</h2>
+      <p>Mark McNeilly served as a global marketing executive with extensive experience at both IBM and Lenovo across the IT industry. His business background spans multiple functions — giving him a comprehensive, cross-functional view of organizational behavior that bridges strategic thinking with the human reality of leading teams.</p>
+      <p>He was selected for this conversation because of his rare ability to connect leadership frameworks to real human outcomes — particularly the way organizational decisions ripple beyond operational metrics and into people's sense of self. His perspective on the <em>human dimension</em> of leadership directly complements the technical curriculum that dominates most MBA programs.</p>
+    </section>
+
+    <!-- THEME 1 -->
+    <section>
+      <p class="eyebrow">Theme 01 · Technology & Human Connection</p>
+      <hr class="rule">
+      <h2>AI, Social Media & the Future of How We Connect</h2>
+      <p>Mark opens with a candid reflection on social media: designed to bring people together, it has often done the opposite — creating division, reinforcing echo chambers, and narrowing the range of perspectives people encounter daily. He sees AI walking the same tightrope.</p>
+      <div class="pull-quote">
+        "Technology reflects the intentions and habits of its users — it could bring people together or push them further apart."
+      </div>
+      <p>The choice, he argues, is fundamentally ours. AI could deepen human relationships or quietly replace them. Individuals will increasingly face a fork in the road: lean into human interaction, or default to AI assistance. The long-term societal outcome will be shaped not by the technology itself, but by the choices and habits people bring to it.</p>
+    </section>
+
+    <!-- THEME 2 -->
+    <section class="card c-ice">
+      <p class="eyebrow">Theme 02 · Early Leadership</p>
+      
